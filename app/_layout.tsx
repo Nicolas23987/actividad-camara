@@ -5,8 +5,9 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
+// Configuración opcional de Expo Router
 export const unstable_settings = {
-  anchor: '(tabs)',
+  initialRouteName: 'index', // inicializa en index.tsx
 };
 
 export default function RootLayout() {
@@ -15,8 +16,17 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+        {/* Pantalla principal: index.tsx */}
+        <Stack.Screen
+          name="index"
+          options={{ headerShown: false }}
+        />
+
+        {/* Pantalla modal */}
+        <Stack.Screen
+          name="modal"
+          options={{ presentation: 'modal', title: 'Modal' }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
